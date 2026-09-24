@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proving a Leadership Programme Works — Shivani Rajwade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14231D;
+    --ink-soft:#3E4A43;
+    --bg:#F1F3EF;
+    --bg-panel:#E7EAE3;
+    --line:#D3D8CE;
+    --teal:#2F6F62;
+    --teal-soft:#E4EDE9;
+    --ochre:#B5793A;
+    --ochre-soft:#F4E9DA;
+    --mono-bg:#1B2620;
+    --mono-text:#DCE7DF;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal); text-decoration-thickness:1px; text-underline-offset:2px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  .layout{
+    display:grid;
+    grid-template-columns: 240px minmax(0,1fr);
+    max-width:1180px;
+    margin:0 auto;
+  }
+
+  .rail{
+    position:sticky;
+    top:0;
+    align-self:start;
+    padding:3rem 1.5rem 3rem 2rem;
+    height:100vh;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+  }
+  .rail-name{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    font-weight:600;
+    margin:0 0 0.2rem;
+  }
+  .rail-role{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    margin:0 0 2.2rem;
+  }
+  .rail nav ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.65rem;}
+  .rail nav a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:0.88rem;
+    border-left:2px solid transparent;
+    padding-left:0.7rem;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .rail nav a:hover, .rail nav a:focus-visible{color:var(--ink); border-left-color:var(--teal);}
+
+  main{padding:3rem 3rem 6rem;}
+
+  .hero{
+    max-width:640px;
+    margin-bottom:4rem;
+  }
+  .hero-label{
+    font-size:0.82rem;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:0.9rem;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:2.15rem;
+    line-height:1.28;
+    margin:0 0 1.3rem;
+  }
+  .hero p{
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    max-width:56ch;
+  }
+
+  section{max-width:640px; margin-bottom:3.6rem; scroll-margin-top:2rem;}
+  section h2{
+    font-family:var(--serif);
+    font-size:1.5rem;
+    font-weight:600;
+    margin:0 0 1.2rem;
+    padding-bottom:0.6rem;
+    border-bottom:1px solid var(--line);
+  }
+  section h3{
+    font-family:var(--sans);
+    font-size:0.98rem;
+    font-weight:700;
+    margin:1.8rem 0 0.5rem;
+  }
+  section h3:first-of-type{margin-top:0;}
+  section p{margin:0 0 1rem; color:var(--ink-soft);}
+
+  .pullquote{
+    font-family:var(--serif);
+    font-size:1.2rem;
+    line-height:1.55;
+    color:var(--ink);
+    background:var(--teal-soft);
+    border-left:3px solid var(--teal);
+    padding:1.3rem 1.6rem;
+    margin:1.6rem 0;
+  }
+
+  .badge{
+    display:inline-block;
+    font-size:0.75rem;
+    font-weight:600;
+    color:var(--ochre);
+    background:var(--ochre-soft);
+    padding:0.25rem 0.65rem;
+    border-radius:3px;
+    margin-bottom:1rem;
+  }
+
+  .diagram-wrap{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    padding:1.6rem;
+    margin:1.4rem 0 1.8rem;
+    overflow-x:auto;
+  }
+  .diagram-caption{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    margin-top:0.9rem;
+  }
+
+  pre{
+    background:var(--mono-bg);
+    color:var(--mono-text);
+    padding:1.2rem 1.4rem;
+    overflow-x:auto;
+    font-family:var(--mono);
+    font-size:0.82rem;
+    line-height:1.6;
+    margin:1.2rem 0 0.6rem;
+  }
+  code{font-family:var(--mono);}
+  .code-note{font-size:0.85rem; color:var(--ink-soft); margin-top:0;}
+
+  .limits-section{
+    background:var(--ochre-soft);
+    border:1px solid #E3CBA3;
+    padding:1.8rem 2rem;
+  }
+  .limits-section h2{border-bottom-color:#E3CBA3;}
+  .limit-item{margin-bottom:1.3rem;}
+  .limit-item:last-child{margin-bottom:0;}
+  .limit-item h3{color:var(--ochre); margin-top:0;}
+  .limit-item p{color:var(--ink-soft);}
+
+  footer{
+    max-width:640px;
+    border-top:1px solid var(--line);
+    padding-top:1.8rem;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+  }
+  footer a{margin-right:1.2rem;}
+
+  @media (max-width: 860px){
+    .layout{grid-template-columns:1fr;}
+    .rail{
+      position:relative;
+      height:auto;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:1.6rem 1.5rem;
+    }
+    main{padding:2.2rem 1.5rem 4rem;}
+    .hero h1{font-size:1.7rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="rail">
+    <p class="rail-name">Shivani Rajwade</p>
+    <p class="rail-role">Instructional Designer → Learning Analytics</p>
+    <nav aria-label="Case study sections">
+      <ul>
+        <li><a href="#framing">Framing</a></li>
+        <li><a href="#design">Measurement design</a></li>
+        <li><a href="#architecture">Data architecture</a></li>
+        <li><a href="#findings">Findings</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="hero">
+      <p class="hero-label">CASE STUDY · LEADERSHIP PIPELINE PROGRAMME</p>
+      <h1>"Is it actually making our managers better leaders, and is it worth what we're spending on it?"</h1>
+      <p>That's the question a CHRO asked after two strong cohorts of completions and satisfaction scores. This case study is the measurement design I built to answer it properly, using Kirkpatrick's model, xAPI, and a privacy-aware analytics architecture built to survive scrutiny from HR and finance.</p>
+    </div>
+
+    <section id="framing">
+      <h2>Framing</h2>
+      <p>A Leadership Pipeline Programme has run two cohorts across a 4,000+ employee IT services organisation. Completion rates and satisfaction scores are strong. Leadership asked a harder question: is the programme changing how managers lead, and is it worth the spend. Post-learning surveys can't answer that.</p>
+      <p>This case study documents the measurement architecture built to answer it, grounded in Kirkpatrick's model, instrumented through xAPI, and built to hold up under scrutiny from HR and finance.</p>
+    </section>
+
+    <section id="design">
+      <h2>Measurement design</h2>
+
+      <h3>Working backward from the business question</h3>
+      <p>I started at Kirkpatrick's Level 4, the business outcome leadership actually cares about, and worked backward through Level 3 to Level 1 and 2. This reverse-design sequence follows Kirkpatrick's own prescribed methodology. It keeps the programme from measuring what's easy, completions and satisfaction, instead of what matters.</p>
+
+      <h3>Rejecting attrition as a standalone metric</h3>
+      <p>Org-wide attrition was the obvious first candidate for Level 4. I rejected it. It's a lagging, multi-causal metric that can't be attributed to a training intervention without controlling for market conditions, compensation cycles, and other factors moving at the same time.</p>
+      <p>I used a cohort comparison instead: regrettable attrition among direct reports of trained managers, measured against a comparison group of not-yet-trained managers over the same period. That isolates the intervention's effect far more defensibly than a before/after trend line.</p>
+
+      <h3>Two systems, kept separate</h3>
+      <p>Training engagement data, module completions and scenario-based responses, sits in a Learning Record Store via xAPI, because xAPI is built to record learning experiences. A recurring culture-pulse survey captures behaviourally anchored questions, like whether a manager asked what support an employee needs. This survey doesn't use xAPI. It measures organisational climate, not a learning event. The two systems join only at analysis time.</p>
+
+      <h3>The privacy decision, and its cost</h3>
+      <p>Joining pulse responses, training records, and attrition data at the individual level would make an anonymous safety survey re-identifiable, which risks response honesty. I aggregated and joined at manager-cohort level instead. This protects anonymity.</p>
+      <p>It also introduces a clustering effect: employees under the same manager aren't statistically independent observations, so effective sample size sits below raw headcount. The real unit of analysis is the manager-cohort itself, roughly 40 trained managers against 40 untrained, not the thousands of employees under them.</p>
+    </section>
+
+    <section id="architecture">
+      <h2>Data architecture</h2>
+      <p>Three systems feed one comparison, joined on manager-cohort ID rather than individual employee ID.</p>
+
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagramTitle">
+          <title id="diagramTitle">Diagram showing the LRS, pulse survey, and HRIS feeding into a shared manager-cohort key, which feeds a single comparison table</title>
+          <style>
+            .box{fill:#F1F3EF; stroke:#2F6F62; stroke-width:1.4;}
+            .boxlabel{font-family:Inter, sans-serif; font-size:12px; font-weight:600; fill:#14231D;}
+            .boxsub{font-family:Inter, sans-serif; font-size:10px; fill:#3E4A43;}
+            .arrow{stroke:#3E4A43; stroke-width:1.3; fill:none; marker-end:url(#arrowhead);}
+            .keybox{fill:#2F6F62; stroke:none;}
+            .keylabel{font-family:Inter, sans-serif; font-size:11px; font-weight:600; fill:#F1F3EF;}
+            .outbox{fill:#B5793A; stroke:none;}
+            .outlabel{font-family:Inter, sans-serif; font-size:11px; font-weight:600; fill:#F4E9DA;}
+          </style>
+          <defs>
+            <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#3E4A43"/>
+            </marker>
+          </defs>
+
+          <rect class="box" x="20" y="20" width="150" height="60" rx="2"/>
+          <text class="boxlabel" x="35" y="45">Learning Record Store</text>
+          <text class="boxsub" x="35" y="62">xAPI · training data</text>
+
+          <rect class="box" x="20" y="100" width="150" height="60" rx="2"/>
+          <text class="boxlabel" x="35" y="125">Pulse survey</text>
+          <text class="boxsub" x="35" y="142">culture · behaviour data</text>
+
+          <rect class="box" x="20" y="180" width="150" height="60" rx="2"/>
+          <text class="boxlabel" x="35" y="205">HRIS</text>
+          <text class="boxsub" x="35" y="222">attrition · productivity</text>
+
+          <path class="arrow" d="M170,50 L270,120"/>
+          <path class="arrow" d="M170,130 L270,130"/>
+          <path class="arrow" d="M170,210 L270,140"/>
+
+          <rect class="keybox" x="270" y="105" width="140" height="50" rx="2"/>
+          <text class="keylabel" x="285" y="126">Shared join key</text>
+          <text class="keylabel" x="285" y="142" style="font-weight:400;">manager-cohort ID</text>
+
+          <path class="arrow" d="M410,130 L510,130"/>
+
+          <rect class="outbox" x="510" y="95" width="115" height="70" rx="2"/>
+          <text class="outlabel" x="522" y="122">Comparison</text>
+          <text class="outlabel" x="522" y="138" style="font-weight:400;">trained vs.</text>
+          <text class="outlabel" x="522" y="152" style="font-weight:400;">untrained cohorts</text>
+        </svg>
+        <p class="diagram-caption">No system joins on individual employee ID. The manager-cohort ID is the only shared key, chosen deliberately to protect individual anonymity while keeping group-level comparison possible.</p>
+      </div>
+
+      <h3>Sample xAPI statement</h3>
+      <p>A scenario response captured under time pressure, part of the emotional-response word-cloud exercise:</p>
+      <pre><code>{
+  "actor": {
+    "objectType": "Agent",
+    "account": {
+      "homePage": "https://leadership-pipeline.example.org",
+      "name": "mgr-cohort-A-014"
+    }
+  },
+  "verb": {
+    "id": "http://adlnet.gov/expapi/verbs/responded",
+    "display": { "en-US": "responded" }
+  },
+  "object": {
+    "id": "https://leadership-pipeline.example.org/scenarios/high-pressure-deadline-conflict",
+    "definition": {
+      "name": { "en-US": "High-pressure deadline conflict scenario" },
+      "type": "http://adlnet.gov/expapi/activities/simulation"
+    }
+  },
+  "result": {
+    "response": "overwhelmed",
+    "duration": "PT4.2S"
+  },
+  "timestamp": "2026-04-14T09:32:07Z"
+}</code></pre>
+      <p class="code-note">The actor is identified by cohort, not by email or name, which is what makes cohort-level anonymity possible at the schema level rather than only at analysis time. Response duration sits in <code>result</code> because a word chosen quickly under a stated time limit is meant to surface an instinctive answer, not a rehearsed one.</p>
+    </section>
+
+    <section id="findings">
+      <h2>Findings</h2>
+      <span class="badge">Illustrative numbers, built to demonstrate the method</span>
+      <p>These figures are constructed to show how the design produces an answer. They are not real data from any employer.</p>
+      <p>Trained-manager cohorts showed a 22-point increase in employees reporting their manager asked what support they need, against a 4-point increase in the untrained comparison group. Regrettable attrition in trained-manager teams ran at roughly 60% of the rate in untrained-manager teams across the same two quarters. Teams under trained managers flagged project timeline risk an average of nine days earlier, consistent with Amy Edmondson's finding that psychological safety increases early disclosure of risk rather than concealment.</p>
+      <div class="pullquote">
+        Managers who completed the Leadership Pipeline Programme had the career-support conversations their teams report as meaningful, and their teams left at roughly 60% the rate of teams under managers who hadn't been through it yet.
+      </div>
+    </section>
+
+    <section id="limitations" class="limits-section">
+      <h2>Limitations</h2>
+
+      <div class="limit-item">
+        <h3>Clustering</h3>
+        <p>Aggregating at manager-cohort level keeps effective sample size below headcount, which weakens statistical confidence relative to what the raw numbers suggest. Closing this gap calls for multilevel modelling, brought in as targeted statistical support while the measurement design and business interpretation stay owned by L&D.</p>
+      </div>
+
+      <div class="limit-item">
+        <h3>Confounding</h3>
+        <p>The cohort comparison controls for company-wide factors like comp cycles and market shifts. It doesn't remove individual-level noise, personal circumstances a given employee is navigating. Cohort size absorbs this; the design doesn't eliminate it.</p>
+      </div>
+
+      <div class="limit-item">
+        <h3>Lagging indicators</h3>
+        <p>Behaviour change at Level 3 can show up within weeks. Business outcomes at Level 4 typically take two to four quarters, often tied to review cycles or external offers landing. Any Level 4 read taken before that window closes gets reported as inconclusive, not negative.</p>
+      </div>
+
+      <div class="limit-item">
+        <h3>Guarding against hindsight bias</h3>
+        <p>Productivity, measured through Edmondson's mechanism of earlier risk and timeline disclosure, was pre-registered as a secondary Level 4 metric at design time. That decision came before any attrition result, specifically to avoid searching through unrelated metrics after a disappointing result and presenting one as though it had been the plan from the start.</p>
+      </div>
+    </section>
+
+    <section id="reflection">
+      <h2>Reflection</h2>
+      <p>This case study sits inside ATD's Impacting Organizational Capability domain, specifically Evaluating Learning Impact and Data and Analytics, two of the 23 capabilities in the Talent Development Capability Model behind the CPTD.</p>
+      <p>It marks a shift from instructional design, where I've spent five years, toward learning analytics. The same instinct for rigour that shaped scenario-based assessment design now applies to proving, or honestly disproving, whether a programme moved the business.</p>
+      <p>Rejecting a flattering but weak metric, naming the statistical cost of a privacy-protective design choice, and pre-registering a secondary metric instead of hunting for one after a disappointing result: these are the habits that separate reporting from analysis. They're the case for belonging in a learning analytics function, not only an instructional design one.</p>
+    </section>
+
+    <footer>
+      <a href="mailto:rajwade.shivani@gmail.com">Email</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <span>Case study 1 of a learning analytics portfolio in progress.</span>
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>
